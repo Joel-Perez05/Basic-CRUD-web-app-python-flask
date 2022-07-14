@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Add New Review</title>
+</head>
+<body>
+    <h1>Add an Anime Review</h1>
+    <form action="/review/create" method="POST">
+        {% with messages = get_flashed_messages(category_filter=['create']) %}
+                {% if messages %}
+                <div>
+                    {% for message in messages %}
+                        <p>{{ message }}</p>
+                    {% endfor %}
+                </div>
+                {% endif %}
+            {% endwith %}
+        <div>
+            <label for="name">Anime Name:</label>
+            <input type="text" name="name">
+        </div>
+        <div>
+            <label for="review">Write A Review:</label>
+            <textarea name="review" cols="30" rows="10"></textarea>
+        </div>
+        <div>
+            <label for="rating">Rate This Anime:</label>
+            <select name="rating">
+                <option value="1">1</option>
+                <option value="2">2</option>
+                <option value="3">3</option>
+                <option value="4">4</option>
+                <option value="5">5</option>
+            </select>
+        </div>
+        <div>
+            <label for="watch_date">Date Watched:</label>
+            <input type="date" name="watch_date">
+        </div>
+        <div>
+            <button type="submit">Submit</button>
+        </div>
+    </form>
+    <div>
+        <a href="/dashboard">Dashboard</a>
+        <a href="/logout">Logout</a>
+    </div>
+</body>
+</html>

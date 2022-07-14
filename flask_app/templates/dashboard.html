@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>User Dashboard</title>
+</head>
+<body>
+    <h1>Welcome {{user.first_name}} {{user.last_name}}!</h1>
+    <div>
+        <table>
+            <thead>
+                <tr>
+                    <th>Name</th>
+                    <th>Rating</th>
+                    <th>Written By:</th>
+                    <th>Actions</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for anime in animes %}
+                <tr>
+                    <td>{{anime.name}}</td>
+                    <td>{{anime.rating}}</td>
+                    <td>{{anime.user.first_name}} {{anime.user.last_name}}</td>
+                    <td>
+                        <a href="/review/{{anime.id}}">View Review </a> |
+                        {% if anime.user_id == session.user_id%}
+                        <a href="/review/edit/{{anime.id}}"> Edit </a> |
+                        <a href="/review/delete/{{anime.id}}"> Delete</a>
+                        {% endif %}
+                    </td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+    <div>
+        <a href="/reviews/new">Add Review</a> |
+        <a href="/logout">Logout</a>
+    </div>
+</body>
+</html>

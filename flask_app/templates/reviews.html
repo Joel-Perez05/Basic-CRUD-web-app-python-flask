@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Review</title>
+</head>
+<body>
+        <h1>{{anime.name}}</h1>
+        <p>Review: {{anime.review}}</p>
+        <p>Rating Given: {{anime.rating}}/5</p>
+        <p>Date Watched: {{anime.watch_date.strftime('%Y-%m-%d')}}</p>
+    <a href="/dashboard">Dashboard</a>
+    <a href="/logout">Logout</a>
+</body>
+</html>
